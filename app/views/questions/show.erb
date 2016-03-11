@@ -1,38 +1,53 @@
-Question:<h1> <%= @question.title + "?"%> </h1>
-<h2> <%=@question.body %> <h2>
-<h3> <%@question.comments.each do |comment|%>
-Comments for this question:
-  <br>
+
+<div id="w3-container">
+<h1> <%= @question.title + "?"%> </h1>
+</div>
+
+<p> <%=@question.body %> </p>
+
+<div id="w3-container w3-light-grey w3-border">
+<div class="w3-container">
+<h2> Comments on this Question </h2>
+</div>
+<section class="w3-container w3-light-grey w3-border"> <%@question.comments.each do |comment|%>
+
 <p> <%=comment.body %> </p>
 <%end%>
-<br>
+
+
 <%if current_user %>
-  <h3>Comment on this Question</h3>
+
+  <p>Comment on Question:</p>
+
 <form method="POST" action="/questions/<%=@question.id%>/comments">
     <input type="hidden" name="commentable_id" value="<%= @question.id %>">
     <input type="hidden" name="commentable_type" value="Question">
     <textarea name="body"></textarea>
     <input type="submit" value="Submit Comment">
 </form>
+<section>
 </div>
-<%else%>
-  <p> You must be <a href="/sessions/new"> sign in</a> or <a href="/users/new"> register</a> to comment on this question
+
 <%end%>
 <br>
--------------------------------------------
 
+<section class="w3-container">
+  <h2>Answers for this Question</h2>
 <%@question.answers.each do |answer| %>
-<h3> Answers to this question </h3>
+<div class="w3-container">
+
+</div>
   <%=answer.body %>
   <br>
 
-  <h3> Comments on this Answer: </h3>
   <%answer.comments.each do |comment|%>
 
   <br>
   <%=comment.body%>
 
   <%end%>
+  </section>
+  <section class="w3-container">
   <%if current_user %>
 <form method="POST" action="/questions/<%=@question.id%>/answers/<%=answer.id%>/comments">
     <input type="hidden" name="commentable_id" value="<%= answer.id %>">
@@ -40,15 +55,20 @@ Comments for this question:
     <textarea name="body"></textarea>
     <input type="submit" value="Submit Comment">
 </form>
-  <%else%>
-  <p> You must be <a href="sessions/new"> sign in</a> or <a href="users/new"> register</a> to comment on this answer
+</section>
+
   <%end%>
 
 
   <%end%>
----------------------------------
-  <h3> Answer this Question </h3>
+<%if current_user %>
+<section class="w3-container">
+  <h1 class="w3-container"> Answer this Question </h1>
+
        <form method="POST" action="/questions/<%=@question.id%>/answers">
     <textarea name="body"></textarea>
+    <br>
     <input type="submit" value="Answer Question">
   </form>
+  </section>
+<%end%>
