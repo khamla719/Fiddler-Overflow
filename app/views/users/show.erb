@@ -31,4 +31,38 @@
       </tbody>
     </table>
   </div>
+
+  <h2>Your Questions:</h2>
+  <div id='questions'>
+    <ul>
+      <% @logged_in_as.questions.each do |question| %>
+        <li>
+          <a href="/questions/:<%= question.id %>"> <%= "#{question.title} -" %></a>created on: <%= question.created_at%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <h2>Your Comments:</h2>
+  <div id='comments'>
+    <ul>
+      <% @comments.each do |comment| %>
+        <li>
+          <a href="/comments/:<%= comment.id %>"> <%= "#{comment.body} -" %></a>created on: <%= comment.created_at%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <h2>Your Answers:</h2>
+  <div id='answers'>
+    <ul>
+      <% @answers.each do |answer| %>
+        <li>
+          <a href="/answers/:<%= answer.id %>"> <%= "#{answer.body} -" %></a>created on: <%= answer.created_at%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

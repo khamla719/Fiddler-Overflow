@@ -22,9 +22,11 @@ end
 get '/users/:id' do
   @logged_in_as = User.find(session[:user_id]) if session[:user_id]
   @viewing_user = User.find(params[:id])
+  @comments = Comment.where(user_id: @logged_in_as.id)
+  @answers = Answer.where(user_id: @logged_in_as.id)
 
   if @logged_in_as && @logged_in_as.id == @viewing_user.id
-    erb :user
+    erb :'users/show'
   else
     erb :not_authorized
   end
