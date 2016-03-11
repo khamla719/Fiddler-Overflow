@@ -3,7 +3,9 @@ get '/' do
   erb :index
 end
 
-get '/secret' do
+get '/questions' do
+  @questions = Question.all
+
   redirect '/sessions/new' unless session[:user_id]
-  "Secret area!"
+  erb :question
 end
