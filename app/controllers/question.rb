@@ -12,12 +12,16 @@ get '/questions/:id' do
 end
 
 post "/questions/:id/voteup" do
-  question = Question.find_by(id: params[:id])
-  question.votes.create(positive: true)
+  @question = Question.find_by(id: params[:id])
+  @question.votes.create(positive: true)
+  redirect "/questions/#{@question.id}"
 end
 
+
+
 post "/questions/:id/votedown" do
-  question = Question.find_by(id: params[:id])
-  question.votes.create(positive: false)
+  @question = Question.find_by(id: params[:id])
+  @question.votes.create(positive: false)
+   redirect "/questions/#{@question.id}"
 end
 
