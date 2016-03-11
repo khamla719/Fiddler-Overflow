@@ -48,7 +48,7 @@
     <ul>
       <% @comments.each do |comment| %>
         <li>
-          <a href="/comments/:<%= comment.id %>"> <%= "#{comment.body} -" %></a>created on: <%= comment.created_at%>
+          <a href="/questions/:<%= comment.commentable_id %>"> <%= "#{comment.body} -" %></a>created on: <%= comment.created_at%>
         </li>
       <% end %>
     </ul>
@@ -59,7 +59,7 @@
     <ul>
       <% @answers.each do |answer| %>
         <li>
-          <a href="/answers/:<%= answer.id %>"> <%= "#{answer.body} -" %></a>created on: <%= answer.created_at%>
+          <a href="/questions/:<%= answer.question_id %>"> <%= "#{answer.body} -" %></a>created on: <%= answer.created_at%>
         </li>
       <% end %>
     </ul>
