@@ -1,11 +1,4 @@
 get '/' do
-
-  erb :index
+redirect '/questions'
 end
 
-get '/questions' do
-  @questions = Question.all
-
-  redirect '/sessions/new' unless session[:user_id]
-  erb :question
-end
