@@ -9,3 +9,9 @@ users = 10.times.map do
                 :email      => Faker::Internet.email,
                 :password   => 'password' )
 end
+
+answer = Answer.create(body: Faker::Hacker.say_something_smart, user_id: 1, question_id: 1)
+question = Question.create(title:Faker::Hacker.noun,body:Faker::Hacker.say_something_smart ,user_id:1)
+comment = Comment.create(body: Faker::Hipster.sentence, user_id: 1,commentable: question)
+votes = Vote.create(positive: true, user_id: 1,votable: answer)
+

@@ -1,0 +1,10 @@
+<%@questions.each do |question|%>
+  <h2><%=question.title%></h2>
+  <%= question.body%>
+  <!-- < %= question.answers%> -->
+  <% question.comments.each do |comments|%>
+    <p><%=comments.body%></p>
+
+
+    <%end%>
+<%end%>

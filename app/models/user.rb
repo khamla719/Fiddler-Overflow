@@ -7,6 +7,10 @@ class EmailValidator < ActiveModel::EachValidator
 end
 
 class User < ActiveRecord::Base
+  has_many :votes, as: :voteable
+  has_many :comments, as: :commentable
+  has_many :questions
+  has_many :answers
 
   validates :first_name, presence: true
   validates :last_name, presence: true
