@@ -1,9 +1,20 @@
-Question:<h1> <%= @question.title + "?"%> </h1>
+  Question:<h1> <%= @question.title + "?"%> </h1>
 <h2> <%=@question.body %> <h2>
+  <%= "#{@question.votes.length} Votes" %>
+  <form action="/questions/<%= @question.id %>/voteup" method="post">
+    <input type="submit" value="Vote Up">
+  </form>
+  <form action="/questions/<%= @question.id %>/votedown" method="post">
+    <input type="submit" value="Vote Down">
+  </form>
+
+
 <h3> <%@question.comments.each do |comment|%>
-Comments for this question:
+
+Comments for this question:</h3>
   <br>
 <p> <%=comment.body %> </p>
+
 <%end%>
 <br>
 <%if current_user %>
@@ -18,8 +29,9 @@ Comments for this question:
 <%else%>
   <p> You must be <a href="/sessions/new"> sign in</a> or <a href="/users/new"> register</a> to comment on this question
 <%end%>
+<a href=""><button type="button">Vote Up</button></a>
+<a href=""><button type="button">Vote Down</button></a>
 <br>
--------------------------------------------
 
 <%@question.answers.each do |answer| %>
 <h3> Answers to this question </h3>
@@ -43,12 +55,16 @@ Comments for this question:
   <%else%>
   <p> You must be <a href="sessions/new"> sign in</a> or <a href="users/new"> register</a> to comment on this answer
   <%end%>
+  <a href=""><button type="button">Vote Up</button></a>
+  <a href=""><button type="button">Vote Down</button></a>
 
 
   <%end%>
----------------------------------
   <h3> Answer this Question </h3>
        <form method="POST" action="/questions/<%=@question.id%>/answers">
     <textarea name="body"></textarea>
     <input type="submit" value="Answer Question">
   </form>
+  <a href=""><button type="button">Vote Up</button></a>
+  <a href=""><button type="button">Vote Down</button></a>
+
