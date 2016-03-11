@@ -1,0 +1,18 @@
+
+
+<% @questions.each do |question| %>
+  <div class = 'votes-answer-container'>
+    <div class ='up-vote-count'><%=question.votes.length%>
+      <span class='votes'>Votes</span>
+    </div>
+    <div class= 'answer-count'><%=question.answers.length%>
+      <span class='answer'>Answers</span>
+    </div>
+  </div>
+    <a class='question-title' href="/questions/<%=question.id%>"><%=question.title %></a>
+    <span class='date-time'><%= question.updated_at.strftime("%b, %d, %Y %I:%M %p")%></span><br>
+  <%end%>
+
+
+
+

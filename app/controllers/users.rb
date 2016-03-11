@@ -3,11 +3,11 @@ get '/users/new' do
     @user = User.find(session[:user_id])
     redirect "/users/#{@user.id}"
   else
-    erb :register
+    erb :"users/new"
   end
 end
 
-post '/users/new' do
+post '/users' do
   @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
   @user.password = params[:password_plaintext]
   if @user.save
@@ -15,7 +15,7 @@ post '/users/new' do
     redirect '/'
   else
     @errors = @user.errors.full_messages
-    erb :register
+    erb :"users/new"
   end
 end
 
@@ -27,7 +27,7 @@ get '/users/:id' do
   @questions = @logged_in_as.questions
 
   if @logged_in_as && @logged_in_as.id == @viewing_user.id
-    erb :'users/show'
+    erb :"users/show"
   else
     erb :not_authorized
   end
