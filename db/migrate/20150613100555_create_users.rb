@@ -1,3 +1,4 @@
+
 class CreateUsers < ActiveRecord::Migration
   ###############################################
   #                                             #
