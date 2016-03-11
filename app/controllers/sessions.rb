@@ -7,6 +7,12 @@ get '/sessions/new' do
   end
 end
 
+get '/session-viewer' do
+
+  session.inspect
+
+end
+
 post '/sessions' do
   @user = User.find_by_email(params[:email])
   if @user && @user.authenticate(params[:password_plaintext])
