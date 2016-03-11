@@ -4,3 +4,20 @@ get '/questions' do
   # redirect '/sessions/new' unless session[:user_id]
   erb :index
 end
+
+get '/questions/:id' do
+
+  @question = Question.find_by(id: params[:id])
+  erb :"questions/show"
+end
+
+post "/questions/:id/voteup" do
+  question = Question.find_by(id: params[:id])
+  question.votes.create(positive: true)
+end
+
+post "/questions/:id/votedown" do
+  question = Question.find_by(id: params[:id])
+  question.votes.create(positive: false)
+end
+
