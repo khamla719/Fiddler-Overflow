@@ -7,7 +7,8 @@ post '/questions/:id/comments' do
     redirect '/'
   end
 end
-  post "/questions/:question_id/answers/:id/comments" do
+
+post "/questions/:question_id/answers/:id/comments" do
     @question = Question.find_by(id: params[:question_id])
     @answer = Answer.find_by(id: params[:id])
     @comment = Comment.create(user_id: session[:id], body: params[:body], commentable_id: @answer.id, commentable_type: "Answer")
@@ -18,3 +19,10 @@ end
     end
 end
 
+post "/questions/:question_id/answers/:id/comments/:id/voteup" do
+
+end
+
+post "/questions/:question_id/answers/:id/comments/:id/voteup" do
+
+end

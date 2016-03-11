@@ -1,4 +1,5 @@
 
+
 <div id="w3-container">
 <h1> <%= @question.title + "?"%> </h1>
 </div>
@@ -6,12 +7,22 @@
 <p> <%=@question.body %> </p>
 
 <div id="w3-container w3-light-grey w3-border">
+  <%= "#{@question.votes.length} Votes" %>
+  <form action="/questions/<%= @question.id %>/voteup" method="post">
+    <input type="submit" value="Vote Up">
+  </form>
+  <form action="/questions/<%= @question.id %>/votedown" method="post">
+    <input type="submit" value="Vote Down">
+  </form>
+
 <div class="w3-container">
 <h2> Comments on this Question </h2>
 </div>
 <section class="w3-container w3-light-grey w3-border"> <%@question.comments.each do |comment|%>
 
+
 <p> <%=comment.body %> </p>
+
 <%end%>
 
 
@@ -29,6 +40,8 @@
 </div>
 
 <%end%>
+<a href=""><button type="button">Vote Up</button></a>
+<a href=""><button type="button">Vote Down</button></a>
 <br>
 
 <section class="w3-container">
@@ -58,17 +71,27 @@
 </section>
 
   <%end%>
+  <a href=""><button type="button">Vote Up</button></a>
+  <a href=""><button type="button">Vote Down</button></a>
 
 
   <%end%>
+
 <%if current_user %>
 <section class="w3-container">
   <h1 class="w3-container"> Answer this Question </h1>
+
 
        <form method="POST" action="/questions/<%=@question.id%>/answers">
     <textarea name="body"></textarea>
     <br>
     <input type="submit" value="Answer Question">
   </form>
+
   </section>
 <%end%>
+
+  <a href=""><button type="button">Vote Up</button></a>
+  <a href=""><button type="button">Vote Down</button></a>
+
+
