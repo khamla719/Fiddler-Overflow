@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('.up-vote-count').('click', toQuestion);
+  $('.up-vote-count').on('click', toQuestion);
 });
 
 var toQuestion = function(event) {
