@@ -10,3 +10,10 @@ post '/questions/:id/answers' do
 
 end
 
+post "/questions/:id/answers/:id/voteup" do
+
+end
+
+post "/questions/:id/answers/:id/votedown" do
+
+end

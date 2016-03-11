@@ -11,3 +11,13 @@ get '/questions/:id' do
   erb :"questions/show"
 end
 
+post "/questions/:id/voteup" do
+  question = Question.find_by(id: params[:id])
+  question.votes.create(positive: true)
+end
+
+post "/questions/:id/votedown" do
+  question = Question.find_by(id: params[:id])
+  question.votes.create(positive: false)
+end
+
