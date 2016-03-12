@@ -1,0 +1,18 @@
+.votes-answer-container {
+  width:100px;
+  position:relative;
+  display:inline-block;
+}
+
+.question-title{
+  position:relative;
+  display:inline-block;
+  width:130px;
+}
+
+.date-time {
+  position:relative;
+  text-align: left;
+  display: inline-block;
+  left:100px;
+}
