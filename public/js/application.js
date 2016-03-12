@@ -1,10 +1,7 @@
 $(document).ready(function () {
-  $('.up-vote-count').on('click', toQuestion);
-  $("a[href='/sessions/new']").click(login)
-
+  $('.up-vote-count').on('click', upVote);
 });
 
-var login = function(event){
+var upVote = function(event){
   event.preventDefault();
-
 }
